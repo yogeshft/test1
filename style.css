@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --primary-color: #006459;
+  --primary-font: 1.3rem;
+  --secondary-color: black;
+  --primary-background: #e2f5f2;
+  --heading: 1.2rem;
+  /* card */
+  --card-title: 0.7rem;
+  --card-des: 0.4rem;
+  --card-price-bg: #fd7132;
+  --card-rating: #ffd84b;
+  /* carousel */
+  --carousel-title: 0.55rem;
+  --carousel-des: 0.4rem;
+  --carousel-features: 0.25rem;
+  /* blog */
+  --blog-title: 0.7rem;
+  --blog-details: 0.2rem;
+  --blog-des: 0.4rem;
+}
+body {
+  font-family: "Times New Roman", Times, serif;
+  overflow-x: hidden;
+}
