@@ -8,7 +8,9 @@
   --primary-font: 1.3rem;
   --secondary-color: black;
   --primary-background: #e2f5f2;
-  --heading: 1.2rem;
+  --headings: 1.2rem;
+  --primary-weight: 900;
+  --primary-btn-color: #fff;
   /* card */
   --card-title: 0.7rem;
   --card-des: 0.4rem;
@@ -23,7 +25,101 @@
   --blog-details: 0.2rem;
   --blog-des: 0.4rem;
 }
+#primary-btn {
+  border: none;
+  padding: 15px;
+  background-color: var(--primary-color);
+  color: var(--primary-btn-color);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+/* add hover effect on button */
 body {
   font-family: "Times New Roman", Times, serif;
   overflow-x: hidden;
+}
+
+/* ***********************************************************************  
+                                      header
+*************************************************************************** */
+header {
+  background-color: var(--primary-background);
+}
+
+/* nav */
+.nav {
+  padding-top: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.logo,
+.nav-items,
+.header-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  gap: 1.5rem;
+  mix-blend-mode: multiply;
+  color: var(--primary-color);
+  font-size: var(--primary-font);
+  font-weight: var(--primary-weight);
+  letter-spacing: 2px;
+}
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+.nav-items {
+  gap: 2rem;
+}
+
+.nav-items a {
+  text-decoration: none;
+  color: var(--secondary-color);
+  font-size: var(--primary-font);
+  display: inline-block;
+}
+
+.nav-items a:hover {
+  color: var(--primary-color);
+  border-bottom: 3px solid var(--primary-color);
+  transform: scale(1.2);
+}
+.header-btn a {
+  text-decoration: none;
+  color: var(--primary-btn-color);
+}
+/* hero header */
+.hero h1 {
+  color: var(--primary-color);
+  font-size: 3rem;
+}
+.hero p {
+  font-size: var(--headings);
+}
+.hero p,
+h1 {
+  text-align: center;
+  margin: 20px;
+}
+/* form */
+/* hero image */
+.hero-img img {
+  mix-blend-mode: multiply;
+}
+.hero-img {
+  display: flex;
+  justify-content: center;
+  height: 600px;
 }

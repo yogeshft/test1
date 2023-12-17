@@ -7,8 +7,46 @@
     <title>Test</title>
   </head>
   <body>
-    <nav></nav>
+    <header class="header">
+      <!-- ------------------------------------------------------------
+                                navbar 
+        ---------------------------------------- -->
+      <nav class="nav">
+        <div class="logo">
+          <img src="./assets/logo.png" alt="website-logo" />
+          <span>E-ONLINE</span>
+        </div>
+        <div class="nav-items">
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#">Courses</a>
+          <a href="#">Blog</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="header-btn">
+          <button id="primary-btn"><a href="#">Get Started</a></button>
+        </div>
+      </nav>
+      <section class="hero">
+        <h1>Learn best Online Courses</h1>
+        <p>48,000 Online Courses for you</p>
+        <div class="find-course">
+          <form action="#">
+            <select name="language" id="language">
+              <option value="javascript">JavaScript</option>
+              <option value="python">Python</option>
+              <option value="c++" disabled>C++</option>
+              <option value="java" selected>Java</option>
+            </select>
+            <input type="search" name="" id="" />
+            <button id="primary-btn" type="submit">Search</button>
+          </form>
+        </div>
+        <div class="hero-img">
+          <img src="./assets/hero.png" alt="hero" />
+        </div>
+      </section>
+    </header>
     <script src="script.js"></script>
   </body>
 </html>
-

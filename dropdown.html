@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      /*the container must be positioned relative:*/
+      .custom-select {
+        position: relative;
+        font-family: Arial;
+      }
+
+      .custom-select select {
+        display: none;
+        /*hide original SELECT element:*/
+      }
+
+      .select-selected {
+        background-color: DodgerBlue;
+      }
+
+      /*style the arrow inside the select element:*/
+      .select-selected:after {
+        position: absolute;
+        content: "";
+        top: 14px;
+        right: 10px;
+        width: 0;
+        height: 0;
+        border: 6px solid transparent;
+        border-color: #fff transparent transparent transparent;
+      }
+
+      /*point the arrow upwards when the select box is open (active):*/
+      .select-selected.select-arrow-active:after {
+        border-color: transparent transparent #fff transparent;
+        top: 7px;
+      }
+
+      /*style the items (options), including the selected item:*/
+      .select-items div,
+      .select-selected {
+        color: #ffffff;
+        padding: 8px 16px;
+        border: 1px solid transparent;
+        border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      /*style items (options):*/
+      .select-items {
+        position: absolute;
+        background-color: DodgerBlue;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 99;
+      }
+
+      /*hide the items when the select box is closed:*/
+      .select-hide {
+        display: none;
+      }
+
+      .select-items div:hover,
+      .same-as-selected {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Custom Select</h2>
+
+    <!--surround the select box with a "custom-select" DIV element. Remember to set the width:-->
+    <div class="custom-select" style="width: 200px">
+      <select>
+        <option value="0">Select car:</option>
+        <option value="1">Audi</option>
+        <option value="2">BMW</option>
+        <option value="3">Citroen</option>
+        <option value="4">Ford</option>
+        <option value="5">Honda</option>
+        <option value="6">Jaguar</option>
+        <option value="7">Land Rover</option>
+        <option value="8">Mercedes</option>
+        <option value="9">Mini</option>
+        <option value="10">Nissan</option>
+        <option value="11">Toyota</option>
+        <option value="12">Volvo</option>
+      </select>
+    </div>
+
+    <script>
+      var customSelectContainers,
+        selectElement,
+        selectedOptionDiv,
+        optionListDiv,
+        optionDiv;
+      var containerIndex, optionIndex, selectedOptionText, selectItemsDiv;
+
+      /*look for any elements with the class "custom-select":*/
+      customSelectContainers = document.getElementsByClassName("custom-select");
+      for (
+        containerIndex = 0;
+        containerIndex < customSelectContainers.length;
+        containerIndex++
+      ) {
+        selectElement =
+          customSelectContainers[containerIndex].getElementsByTagName(
+            "select"
+          )[0];
+        selectedOptionDiv = document.createElement("DIV");
+        selectedOptionDiv.setAttribute("class", "select-selected");
+        selectedOptionText =
+          selectElement.options[selectElement.selectedIndex].innerHTML;
+        selectedOptionDiv.innerHTML = selectedOptionText;
+        customSelectContainers[containerIndex].appendChild(selectedOptionDiv);
+
+        optionListDiv = document.createElement("DIV");
+        optionListDiv.setAttribute("class", "select-items select-hide");
+        for (
+          optionIndex = 1;
+          optionIndex < selectElement.length;
+          optionIndex++
+        ) {
+          optionDiv = document.createElement("DIV");
+          optionDiv.innerHTML = selectElement.options[optionIndex].innerHTML;
+          optionDiv.addEventListener("click", function (event) {
+            var selectedIndex, optionText, sameAsSelectedElements;
+            selectedIndex = selectElement.selectedIndex;
+            optionText = this.innerHTML;
+            for (var i = 0; i < selectElement.length; i++) {
+              if (selectElement.options[i].innerHTML == optionText) {
+                selectElement.selectedIndex = i;
+                selectedOptionDiv.innerHTML = optionText;
+                sameAsSelectedElements =
+                  this.parentNode.getElementsByClassName("same-as-selected");
+                for (var j = 0; j < sameAsSelectedElements.length; j++) {
+                  sameAsSelectedElements[j].removeAttribute("class");
+                }
+                this.setAttribute("class", "same-as-selected");
+                break;
+              }
+            }
+            selectedOptionDiv.click();
+          });
+          optionListDiv.appendChild(optionDiv);
+        }
+        customSelectContainers[containerIndex].appendChild(optionListDiv);
+        selectedOptionDiv.addEventListener("click", function (event) {
+          event.stopPropagation();
+          closeAllSelect(this);
+          this.nextSibling.classList.toggle("select-hide");
+          this.classList.toggle("select-arrow-active");
+        });
+      }
+
+      function closeAllSelect(currentElement) {
+        var selectItems,
+          selectedOptions,
+          selectItemIndex,
+          selectedOptionIndex,
+          selectedOptionIndexes;
+        selectItems = document.getElementsByClassName("select-items");
+        selectedOptions = document.getElementsByClassName("select-selected");
+        selectedOptionIndexes = [];
+        for (
+          selectedOptionIndex = 0;
+          selectedOptionIndex < selectedOptions.length;
+          selectedOptionIndex++
+        ) {
+          if (currentElement == selectedOptions[selectedOptionIndex]) {
+            selectedOptionIndexes.push(selectedOptionIndex);
+          } else {
+            selectedOptions[selectedOptionIndex].classList.remove(
+              "select-arrow-active"
+            );
+          }
+        }
+        for (
+          selectItemIndex = 0;
+          selectItemIndex < selectItems.length;
+          selectItemIndex++
+        ) {
+          if (!selectedOptionIndexes.includes(selectItemIndex)) {
+            selectItems[selectItemIndex].classList.add("select-hide");
+          }
+        }
+      }
+
+      document.addEventListener("click", function () {
+        closeAllSelect();
+      });
+    </script>
+  </body>
+</html>
+<!-- reference: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_custom_select -->
