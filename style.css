@@ -8,7 +8,7 @@
   --primary-font: 1.3rem;
   --secondary-color: black;
   --primary-background: #e2f5f2;
-  --headings: 1.2rem;
+  --headings: 2rem;
   --primary-weight: 900;
   --primary-btn-color: #fff;
   /* card */
@@ -109,7 +109,7 @@ header {
   font-size: var(--headings);
 }
 .hero p,
-h1 {
+.hero h1 {
   text-align: center;
   margin: 20px;
 }
@@ -122,4 +122,73 @@ h1 {
   display: flex;
   justify-content: center;
   height: 600px;
+}
+
+/* ******************************************************
+                    course card
+************************* */
+.course-features {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  justify-content: space-evenly;
+  background-color: var(--primary-background);
+}
+
+.course-features img {
+  mix-blend-mode: multiply;
+  height: 70px;
+}
+
+.enrolled,
+.online-courses,
+.instructors {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.student-details,
+.course-details,
+.instructor-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: var(--primary-background);
+  /* TODO: add box shadow effect */
+}
+
+.student-details p:nth-child(2),
+.course-details p:nth-child(2),
+.instructor-details p:nth-child(2) {
+  color: var(--primary-color);
+  font-size: var(--primary-font);
+  font-weight: var(--primary-weight);
+}
+
+/* ********************************************************************** 
+                         main section
+******************************************************************** */
+main {
+  width: 70%;
+  background-color: red;
+  margin: auto;
+}
+
+main h1 {
+  font-size: var(--headings);
+  font-weight: var(--primary-weight);
+}
+/* ********************************************************************** 
+                          our online courses 
+******************************************************************** */
+.courses-category-list {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+}
+
+.tab-hover:hover {
+  border-bottom: #006459;
+  transition: all 0.3s;
 }

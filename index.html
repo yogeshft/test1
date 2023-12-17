@@ -4,8 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script defer src="course.js"></script>
     <title>Test</title>
   </head>
+
   <body>
     <header class="header">
       <!-- ------------------------------------------------------------
@@ -47,6 +49,51 @@
         </div>
       </section>
     </header>
+
+    <!-- -------------------------------------- 
+                  course features
+       -------------------- -->
+    <section class="course-features">
+      <div class="enrolled">
+        <img src="./assets/course-features/students.png " alt="students" />
+        <div class="student-details">
+          <p>Enrolled Students</p>
+          <p>80,000+</p>
+        </div>
+      </div>
+      <div class="online-courses">
+        <img src="./assets/course-features/courses.png" alt="courses" />
+        <div class="course-details">
+          <p>Online Courses</p>
+          <p>1,200+</p>
+        </div>
+      </div>
+      <div class="instructors">
+        <img src="./assets/course-features/instructor.png" alt="instructors" />
+        <div class="instructor-details">
+          <p>Expert Instructors</p>
+          <p>80,000+</p>
+        </div>
+      </div>
+    </section>
+    <main>
+      <!-- our online courses -->
+      <section class="online-course">
+        <h1>Our Online Courses</h1>
+        <div class="courses-category-list" id="courses-category-list">
+          <span id="all">ALL</span>
+          <span id="business">BUSINESS</span>
+          <span id="design">DESIGN</span>
+          <span id="development">DEVELOPMENT</span>
+          <span id="management">MANAGEMENT </span>
+          <span id="technology">TECHNOLOGY</span>
+          <span id="photo">PHOTO</span>
+        </div>
+        <div class="course-category-container">
+          <!-- data will be inserted dynamically -->
+        </div>
+      </section>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>
