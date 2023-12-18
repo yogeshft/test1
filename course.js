@@ -74,26 +74,17 @@ const courses = [
 
 // tabs
 
-const category = document.getElementById("courses-category-list");
-
-category.addEventListener("click", (e) => {
-  let selectedId;
-  switch (e.target.id) {
-    case "all":
-      selectedId = "ABc";
-      console.log("h");
-      break;
-    case "business":
-      selectedId = "def";
-      console.log("I");
-      break;
-    case "design":
-      selectedId = "ghi";
-      console.log("j");
-      break;
-    case "development":
-      selectedId = "kjk";
-      console.log("K");
-      break;
-  }
-});
+document
+  .getElementById("courses-category-list")
+  .addEventListener("click", function (e) {
+    if (e.target.id === "all") {
+      let changeBorderBottom = document.getElementById("all");
+      changeBorderBottom.classList.add("course-active");
+    }
+    if (e.target.id === "business") {
+      let changeBorderBottom = document.getElementById("business");
+      changeBorderBottom.classList.add("course-active");
+      // document.getElementById("all").classList.remove("course-active");
+    }
+  });
+// todo: create an array, for loop 
